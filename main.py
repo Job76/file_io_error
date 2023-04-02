@@ -4,10 +4,10 @@ import shutil
 import glob
 import hashlib
 
+hash_size = 1048576  # MD5 (first 1,048,576 bytes) 1048576 = 1024kb
+
 # Does not support removal of folders beginning with a . (dot)
-workdir = 'C:\\Users\\user\\OneDrive'
-# filename = ''  # NON-DEFECTIVE
-# filename = ''  # DEFECTIVE
+workdir = 'C:\\Users\\user\\OneDrive(defective)'
 
 os.chdir(workdir)
 cwd = os.getcwd()
@@ -15,17 +15,11 @@ if workdir != cwd:  # Exit if not in the correct directory
     exit(1)
 print(cwd)
 
-overwrite = 1
-mainfolder = os.getcwd()
 # workfiles = glob.glob("**", recursive=True)
 workfiles = glob.glob("**/*", recursive=True)
 total_files = len(workfiles)
 files_to_do = total_files
-# print(files)
-# print(workfiles)
 print("Files found:", total_files)
-
-hash_size = 1048576  # MD5 (first 1,048,576 bytes) 1048576 = 1024kb
 
 if __name__ == '__main__':
     for file in workfiles:
@@ -73,4 +67,3 @@ if __name__ == '__main__':
         else:
             print("Given directory doesn't exist")
 exit()
-# End of File
